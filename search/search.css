@@ -1,0 +1,7 @@
+.site-search { position: relative; max-width: 520px; }
+#site-search-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+.site-search-results { position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; max-height: 360px; overflow: auto; border-radius: 0 0 6px 6px; box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.site-search-results .item { padding: 10px; border-top: 1px solid #f2f2f2; cursor: pointer; }
+.site-search-results .item:hover { background: #f7f7f7; }
+.site-search-results .title { font-weight: 600; margin-bottom: 4px; }
+.site-search-results .snippet { color: #666; font-size: 13px; }

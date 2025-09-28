@@ -1,0 +1,410 @@
+﻿[
+    {
+        "path":  "about-studio\\index.html"
+    },
+    {
+        "path":  "about-studio\\revslider\\revslider.html"
+    },
+    {
+        "path":  "architecture-services\\index.html"
+    },
+    {
+        "path":  "architecture-services\\revslider\\revslider.html"
+    },
+    {
+        "path":  "are-you-thinking-of-building-home-in-classic-style-modern-or-both\\feed\\index.html"
+    },
+    {
+        "path":  "are-you-thinking-of-building-home-in-classic-style-modern-or-both\\index.html"
+    },
+    {
+        "path":  "are-you-thinking-of-building-home-in-classic-style-modern-or-both\\index0e22.html"
+    },
+    {
+        "path":  "are-you-thinking-of-building-home-in-classic-style-modern-or-both\\revslider\\revslider.html"
+    },
+    {
+        "path":  "author\\admin\\feed\\index.html"
+    },
+    {
+        "path":  "author\\admin\\index.html"
+    },
+    {
+        "path":  "author\\admin\\page\\2\\index.html"
+    },
+    {
+        "path":  "author\\admin\\page\\2\\revslider\\revslider.html"
+    },
+    {
+        "path":  "author\\admin\\revslider\\revslider.html"
+    },
+    {
+        "path":  "blog\\index.html"
+    },
+    {
+        "path":  "blog\\page\\2\\index.html"
+    },
+    {
+        "path":  "blog\\page\\2\\revslider\\revslider.html"
+    },
+    {
+        "path":  "blog\\revslider\\revslider.html"
+    },
+    {
+        "path":  "contact-us\\index.html"
+    },
+    {
+        "path":  "contact-us\\revslider\\revslider.html"
+    },
+    {
+        "path":  "feed\\index.html"
+    },
+    {
+        "path":  "grid-wide\\index.html"
+    },
+    {
+        "path":  "index.html"
+    },
+    {
+        "path":  "meet-the-arcitect\\index.html"
+    },
+    {
+        "path":  "pricing-plans\\index.html"
+    },
+    {
+        "path":  "pricing-plans\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\business\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\business\\index.html"
+    },
+    {
+        "path":  "product-tag\\business\\index25c3.html"
+    },
+    {
+        "path":  "product-tag\\business\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\index.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\index19dd.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\index204f.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\index9425.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\indexb87b.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\indexdae0.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\indexe96f.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\indexf0d3.html"
+    },
+    {
+        "path":  "product-tag\\consulting\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\marketing\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\marketing\\index.html"
+    },
+    {
+        "path":  "product-tag\\marketing\\index25c3.html"
+    },
+    {
+        "path":  "product-tag\\marketing\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\music\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\music\\index.html"
+    },
+    {
+        "path":  "product-tag\\music\\index528e.html"
+    },
+    {
+        "path":  "product-tag\\music\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\index.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\index19dd.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\index9425.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\indexb87b.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\indexdae0.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\indexe96f.html"
+    },
+    {
+        "path":  "product-tag\\solutions\\indexf0d3.html"
+    },
+    {
+        "path":  "product-tag\\sound\\index528e.html"
+    },
+    {
+        "path":  "product-tag\\statistics\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\statistics\\index.html"
+    },
+    {
+        "path":  "product-tag\\statistics\\index25c3.html"
+    },
+    {
+        "path":  "product-tag\\stocks\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\stocks\\index.html"
+    },
+    {
+        "path":  "product-tag\\stocks\\index204f.html"
+    },
+    {
+        "path":  "product-tag\\tech\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\tech\\index.html"
+    },
+    {
+        "path":  "product-tag\\tech\\index528e.html"
+    },
+    {
+        "path":  "product-tag\\tech\\revslider\\revslider.html"
+    },
+    {
+        "path":  "product-tag\\trading\\feed\\index.html"
+    },
+    {
+        "path":  "product-tag\\trading\\index.html"
+    },
+    {
+        "path":  "product-tag\\trading\\index19dd.html"
+    },
+    {
+        "path":  "product-tag\\trading\\index204f.html"
+    },
+    {
+        "path":  "product-tag\\trading\\indexb87b.html"
+    },
+    {
+        "path":  "product-tag\\trading\\indexdae0.html"
+    },
+    {
+        "path":  "product-tag\\trading\\indexe96f.html"
+    },
+    {
+        "path":  "product-tag\\trading\\indexf0d3.html"
+    },
+    {
+        "path":  "service\\3d Visualization\\3d visualization.html"
+    },
+    {
+        "path":  "service\\architectural-design\\index.html"
+    },
+    {
+        "path":  "service\\Interior Documentation\\Interior Documentation.html"
+    },
+    {
+        "path":  "service\\interior-design\\index.html"
+    },
+    {
+        "path":  "service\\landscape-architecture\\index.html"
+    },
+    {
+        "path":  "service\\project-consultant\\index.html"
+    },
+    {
+        "path":  "service\\project-consultant\\revslider\\revslider.html"
+    },
+    {
+        "path":  "service\\residential-renovation\\index.html"
+    },
+    {
+        "path":  "service\\Scan To Bim\\Scan Bim.html"
+    },
+    {
+        "path":  "tag\\analysis\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\analysis\\index.html"
+    },
+    {
+        "path":  "tag\\business\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\business\\index.html"
+    },
+    {
+        "path":  "tag\\consulting\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\consulting\\index.html"
+    },
+    {
+        "path":  "tag\\corporate\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\corporate\\index.html"
+    },
+    {
+        "path":  "tag\\data\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\data\\index.html"
+    },
+    {
+        "path":  "tag\\marketing\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\marketing\\index.html"
+    },
+    {
+        "path":  "tag\\solutions\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\solutions\\index.html"
+    },
+    {
+        "path":  "tag\\statistics\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\statistics\\index.html"
+    },
+    {
+        "path":  "tag\\stocks\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\stocks\\index.html"
+    },
+    {
+        "path":  "tag\\trading\\feed\\index.html"
+    },
+    {
+        "path":  "tag\\trading\\index.html"
+    },
+    {
+        "path":  "Untitled-1.html"
+    },
+    {
+        "path":  "why-choose-us\\index.html"
+    },
+    {
+        "path":  "work-projects\\index.html"
+    },
+    {
+        "path":  "works\\apartment\\index.html"
+    },
+    {
+        "path":  "works\\architecture\\index.html"
+    },
+    {
+        "path":  "works\\art-family-residence\\index.html"
+    },
+    {
+        "path":  "works\\art-family-residence-2\\index.html"
+    },
+    {
+        "path":  "works\\building\\index.html"
+    },
+    {
+        "path":  "works\\civil-cultural\\index.html"
+    },
+    {
+        "path":  "works\\danang-house\\index.html"
+    },
+    {
+        "path":  "works\\design\\index.html"
+    },
+    {
+        "path":  "works\\designer-apartment\\index.html"
+    },
+    {
+        "path":  "works\\duplex\\index.html"
+    },
+    {
+        "path":  "works\\high-end-apartment\\index.html"
+    },
+    {
+        "path":  "works\\house\\index.html"
+    },
+    {
+        "path":  "works\\loft-kitchen-interior\\index.html"
+    },
+    {
+        "path":  "works\\luxury-apartment\\index.html"
+    },
+    {
+        "path":  "works\\luxury-bathroom-interior\\index.html"
+    },
+    {
+        "path":  "works\\luxury-bathroom-interior-2\\index.html"
+    },
+    {
+        "path":  "works\\luxury-bathroom-interior-2\\revslider\\revslider.html"
+    },
+    {
+        "path":  "works\\minimal-guests-house\\index.html"
+    },
+    {
+        "path":  "works\\minimalistic-style-appartment\\index.html"
+    },
+    {
+        "path":  "works\\minimalistic-style-appartment\\revslider\\revslider.html"
+    },
+    {
+        "path":  "works\\modular-cabins\\index.html"
+    },
+    {
+        "path":  "works\\private-house-in-spain\\index.html"
+    },
+    {
+        "path":  "works\\stylish-family-appartment\\index.html"
+    },
+    {
+        "path":  "works\\stylish-family-appartment\\revslider\\revslider.html"
+    },
+    {
+        "path":  "works\\white-italian-villa\\index.html"
+    },
+    {
+        "path":  "wp-content\\plugins\\index.html"
+    },
+    {
+        "path":  "wp-content\\plugins\\revslider\\index.html"
+    },
+    {
+        "path":  "wp-content\\themes\\maiko\\assets\\img\\bg-timetable.html"
+    },
+    {
+        "path":  "wp-content\\themes\\maiko\\assets\\img\\thumb-mask.html"
+    },
+    {
+        "path":  "wp-json\\index.html"
+    }
+]
