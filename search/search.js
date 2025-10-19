@@ -1,33 +1,16 @@
 
 
 
-/**
- * ===========================================
- * SITE SEARCH FUNCTIONALITY
- * ===========================================
- * Handles live search functionality for the website
- * Searches through site content and displays results
- */
-
 (function(){
-	// Get search input and results panel elements
 	const input = document.getElementById('site-search-input');
 	const panel = document.getElementById('site-search-results');
 	if(!input || !panel) return;
 
-	// Search configuration variables
 	let pages = [];
 	let indexBuilt = false;
 	const MAX_PAGES_TO_INDEX = 500; // guard for very large sites
 	const MAX_CONTENT_CHARS = 150000; // limit per page fetch
 
-	/**
-	 * ===========================================
-	 * UTILITY FUNCTIONS
-	 * ===========================================
-	 */
-
-	// Convert HTML content to searchable text
 	function htmlToText(html){
 		const doc = new DOMParser().parseFromString(html, 'text/html');
 		const title = (doc.querySelector('title')?.textContent || '').trim();
@@ -35,13 +18,6 @@
 		return { title, text };
 	}
 
-	/**
-	 * ===========================================
-	 * INDEX BUILDING FUNCTION
-	 * ===========================================
-	 */
-	
-	// Build search index from site pages
 	async function buildIndex(){
 		if(indexBuilt) return;
 		let list = [];

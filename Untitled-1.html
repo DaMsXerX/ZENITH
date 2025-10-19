@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Instant 3D House (No Loader)</title>
+<style>
+  html,body{margin:0;height:100%;background:#0b0f17;overflow:hidden;font-family:system-ui,Segoe UI,Roboto,Arial}
+  #ui{position:fixed;top:10px;left:10px;display:flex;gap:8px;z-index:10}
+  .btn{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#e5e7eb;cursor:pointer}
+  .btn.active{background:rgba(96,165,250,.25);border-color:rgba(96,165,250,.6)}
+  #hint{position:fixed;left:12px;bottom:12px;color:#e5e7eb;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 12px}
+  #hint code{background:rgba(255,255,255,.12);padding:2px 6px;border-radius:6px}
+</style>
+</head>
+<body>
+<div id="ui">
+  <button id="orbitBtn" class="btn active" title="Orbit (O)">Orbit</button>
+  <button id="fpBtn" class="btn" title="First-Person Walk (F)">First-Person</button>
+</div>
+<div id="hint">
+  <b>Controls</b>: Orbit = drag, wheel = zoom, right-drag = pan. |
+  First-Person = <code>F</code> → click to lock → <code>W A S D</code>, <code>Shift</code> run, <code>Space</code> up, <code>C</code> down, <code>Esc</code> unlock. |
+  Toggle: <code>O</code>/<code>F</code>
+</div>
+
+<script type="module">
+import * as THREE from 'https://unpkg.com/three@0.161.0/build/three.module.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.161.0/examples/jsm/controls/OrbitControls.js';
+import { PointerLockControls } from 'https://unpkg.com/three@0.161.0/examples/jsm/controls/PointerLockControls.js';
+
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0f17);
+
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 2000);
+camera.position.set(10, 6, 12);
+
+// Lights
+const hemi = new THREE.HemisphereLight(0xffffff, 0x222233, 0.9); scene.add(hemi);
+const sun  = new THREE.DirectionalLight(0xffffff, 1.2); sun.position.set(15,25,10); scene.add(sun);
+
+// Ground/Floor
+const floorMat = new THREE.MeshStandardMaterial({color:0x2a2f38, roughness:.95, metalness:0});
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(200,200), floorMat);
+floor.rotation.x = -Math.PI/2; floor.position.y = 0;
+scene.add(floor);
+
+// ---------- Procedural House (no external files) ----------
+const WALL_H = 3;            // wall height (meters)
+const THICK  = 0.2;          // wall thickness
+const HOUSE_W = 12, HOUSE_D = 8; // outer size
+
+const wallMat = new THREE.MeshStandardMaterial({color:0xbfc6d0, roughness:.9, metalness:0});
+const trimMat = new THREE.MeshStandardMaterial({color:0x9aa3ad, roughness:.9, metalness:0});
+const glassMat= new THREE.MeshPhysicalMaterial({color:0x99bbff, roughness:.1, metalness:0, transmission:.7, thickness:.2});
+
+// Helper to add a wall segment (centered)
+function addWall(x,y,z, w,h,d, mat=wallMat){
+  const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+  m.position.set(x,y,z);
+  scene.add(m); return m;
+}
+
+// Outer walls (make doorway gap on one side)
+const y = WALL_H/2;
+// North & South
+addWall(0, y, -HOUSE_D/2, HOUSE_W, WALL_H, THICK);       // back
+addWall(-HOUSE_W/4, y, HOUSE_D/2, HOUSE_W/2-1.2, WALL_H, THICK); // front left
+addWall( HOUSE_W/4, y, HOUSE_D/2, HOUSE_W/2-1.2, WALL_H, THICK); // front right
+// Door frame gap: 1.2m wide centered; add a simple header beam
+addWall(0, WALL_H-0.2, HOUSE_D/2, 1.4, 0.4, THICK, trimMat);
+
+// East & West
+addWall(-HOUSE_W/2, y, 0, THICK, WALL_H, HOUSE_D);
+addWall( HOUSE_W/2, y, 0, THICK, WALL_H, HOUSE_D);
+
+// Interior wall splitting two rooms, with a doorway gap
+addWall(0, y, 0, THICK, WALL_H, HOUSE_D-2);               // main spine
+// doorway opening on interior wall
+const gapW = 1; const gapZ = 0; // remove a small piece to form door
+// create two short segments to leave a gap ~1m
+addWall(0, 1, gapZ-1.2, THICK, 2, 2); // below header
+addWall(0, 2.7, gapZ, THICK, .6, 1.0, trimMat); // header
+
+// Simple windows on side walls (glass panes)
+function addWindow(x,z, w=1.2, h=1, sill=1.2){
+  const g = new THREE.Mesh(new THREE.BoxGeometry(w, h, 0.04), glassMat);
+  g.position.set(x, sill + h/2, z);
+  scene.add(g);
+}
+addWindow(-HOUSE_W/2+THICK/2+0.03, -2.0, 1.2, 1.0); // west wall
+addWindow( HOUSE_W/2-THICK/2-0.03,  2.0, 1.2, 1.0); // east wall
+
+// Simple roof (two planes)
+const roofMat = new THREE.MeshStandardMaterial({color:0x55616f, roughness:.8, metalness:.05});
+const roofAngle = Math.PI/6;
+const roofW = HOUSE_W+0.6, roofD = HOUSE_D+0.6, roofY = WALL_H+0.75;
+const roof1 = new THREE.Mesh(new THREE.PlaneGeometry(roofW, roofD), roofMat);
+roof1.rotation.x = Math.PI/2 - roofAngle; roof1.rotation.z = Math.PI;
+roof1.position.set(0, roofY, 0.01);
+const roof2 = roof1.clone(); roof2.rotation.x = Math.PI/2 + roofAngle; roof2.position.z = -0.01;
+scene.add(roof1, roof2);
+
+// Simple interior “flooring” slab
+const inFloor = new THREE.Mesh(new THREE.BoxGeometry(HOUSE_W-0.2, 0.1, HOUSE_D-0.2),
+                               new THREE.MeshStandardMaterial({color:0x39414d, roughness:.95}));
+inFloor.position.set(0, 0.05, 0);
+scene.add(inFloor);
+
+// A basic door (just a thin panel you can walk through)
+const door = new THREE.Mesh(new THREE.BoxGeometry(1.0, 2.1, 0.05),
+                            new THREE.MeshStandardMaterial({color:0x8b5a2b, roughness:.8}));
+door.position.set(0, 1.05, HOUSE_D/2 - THICK/2 - 0.03);
+scene.add(door);
+
+// Camera controls
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableDamping = true;
+orbit.target.set(0, 1.2, 0);
+
+const fp = new PointerLockControls(camera, renderer.domElement);
+let move={f:0,b:0,l:0,r:0,up:0,dn:0,run:0};
+let vel = new THREE.Vector3(), dir = new THREE.Vector3();
+const baseSpeed = 6;
+
+function setMode(mode){
+  const ob = document.getElementById('orbitBtn');
+  const fb = document.getElementById('fpBtn');
+  if(mode==='orbit'){ orbit.enabled=true; fp.unlock(); ob.classList.add('active'); fb.classList.remove('active'); }
+  else { orbit.enabled=false; fp.lock(); ob.classList.remove('active'); fb.classList.add('active'); }
+}
+document.getElementById('orbitBtn').onclick=()=>setMode('orbit');
+document.getElementById('fpBtn').onclick=()=>setMode('fp');
+
+addEventListener('keydown',e=>{
+  switch(e.code){
+    case 'KeyW': move.f=1; break; case 'KeyS': move.b=1; break;
+    case 'KeyA': move.l=1; break; case 'KeyD': move.r=1; break;
+    case 'Space': move.up=1; break; case 'KeyC': move.dn=1; break;
+    case 'ShiftLeft': move.run=1; break;
+    case 'KeyF': setMode('fp'); break; case 'KeyO': setMode('orbit'); break;
+  }
+});
+addEventListener('keyup',e=>{
+  switch(e.code){
+    case 'KeyW': move.f=0; break; case 'KeyS': move.b=0; break;
+    case 'KeyA': move.l=0; break; case 'KeyD': move.r=0; break;
+    case 'Space': move.up=0; break; case 'KeyC': move.dn=0; break;
+    case 'ShiftLeft': move.run=0; break;
+  }
+});
+
+// place camera to view front
+camera.position.set(HOUSE_W*0.8, WALL_H*0.8, HOUSE_D*1.3);
+orbit.update();
+
+// animate
+let last = performance.now();
+function tick(){
+  requestAnimationFrame(tick);
+  const now = performance.now(); const dt = Math.min((now-last)/1000, 0.05); last = now;
+
+  if(fp.isLocked){
+    dir.set(move.r-move.l, move.up-move.dn, move.f-move.b);
+    if(dir.lengthSq()>0) dir.normalize();
+    const accel = (move.run? baseSpeed*2 : baseSpeed);
+    vel.x -= vel.x*8*dt; vel.y -= vel.y*8*dt; vel.z -= vel.z*8*dt;
+    if(dir.lengthSq()>0){
+      const camDir = new THREE.Vector3(); fp.getDirection(camDir);
+      const right = new THREE.Vector3().crossVectors(camDir, new THREE.Vector3(0,1,0)).normalize();
+      vel.addScaledVector(camDir,  accel*dt*dir.z);
+      vel.addScaledVector(right,   accel*dt*dir.x);
+      vel.y += (accel*dt*dir.y);
+    }
+    fp.moveRight(vel.x);
+    fp.moveForward(vel.z);
+    camera.position.y += vel.y;
+  } else {
+    orbit.update();
+  }
+  renderer.render(scene,camera);
+}
+tick();
+
+addEventListener('resize',()=>{
+  camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+
+// default mode
+setMode('orbit');
+</script>
+</body>
+</html>

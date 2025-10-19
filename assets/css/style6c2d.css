@@ -33101,6 +33101,7 @@ input[type="submit"]:hover {
 .pxl-icon-box1.style-3 .pxl-item--inner .pxl-item--title {
   margin-bottom: 15px;
   font-weight: 400;
+font-size: 30px;
 }
 .pxl-icon-box1.style-3 .pxl-item--inner .pxl-item--description a {
   color: var(--third-color);

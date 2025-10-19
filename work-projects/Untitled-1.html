@@ -1,0 +1,414 @@
+
+<section>
+
+    <style>
+  
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        @media (min-width: 640px) {
+            .header-content {
+                padding: 1rem 1rem;
+            }
+            .logo {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .header-content {
+                padding: 1.25rem 1.5rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+
+        nav {
+            position: sticky;
+            top: 45px;
+            z-index: 40;
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        @media (min-width: 640px) {
+            nav {
+                top: 57px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                top: 73px;
+            }
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.75rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .nav-content {
+                display: flex;
+                gap: 1.5rem;
+                padding: 1rem 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-content {
+                padding: 1rem 1.5rem;
+                gap: 2rem;
+            }
+        }
+
+        .nav-btn {
+            white-space: nowrap;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding-bottom: 0.25rem;
+            transition: all 0.3s ease;
+            color: #666;
+            border-bottom: 2px solid transparent;
+            text-align: left;
+        }
+
+        @media (min-width: 640px) {
+            .nav-btn {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .nav-btn {
+                font-size: 0.875rem;
+            }
+        }
+
+        .nav-btn:hover {
+            color: #000;
+        }
+
+        .nav-btn.active {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        main {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+        }
+
+        @media (min-width: 640px) {
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            main {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .project-card {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-image-wrapper {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.08);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.93);
+            transform: translateX(-100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateX(0);
+        }
+
+        .overlay-description {
+            font-size: 0.875rem;
+            line-height: 1.7;
+            color: #e5e5e5;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .overlay-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        .overlay-arrow {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .arrow-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .project-info {
+            padding-top: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-tag {
+            font-size: 0.625rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        @media (min-width: 768px) {
+            .project-tag {
+                font-size: 0.7rem;
+            }
+        }
+
+        .project-tag::after {
+            content: ",";
+            margin-right: 0.25rem;
+            color: #666;
+        }
+
+        .project-tag:last-child::after {
+            content: "";
+            margin: 0;
+        }
+
+        .project-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #000;
+        }
+
+        @media (min-width: 640px) {
+            .project-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .project-title {
+                font-size: 1.125rem;
+            }
+        }
+
+        footer {
+            background: #000;
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 2rem 0;
+                margin-top: 4rem;
+            }
+        }
+
+        footer p {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            footer p {
+                font-size: 0.875rem;
+            }
+        }
+
+        nav::-webkit-scrollbar {
+            height: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+<div>
+    <header>
+        <div class="header-content">
+            <div class="logo">ZENITH VISIONS</div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <button class="nav-btn active" data-category="ALL PROJECTS">ALL PROJECTS</button>
+            <button class="nav-btn" data-category="ARCHITECTURE">ARCHITECTURE</button>
+            <button class="nav-btn" data-category="STRUCTURE">STRUCTURE</button>
+            <button class="nav-btn" data-category="MEP">MEP</button>
+            <button class="nav-btn" data-category="INTERIOR DOCUMENTATION">INTERIOR DOCUMENTATION</button>
+            <button class="nav-btn" data-category="SCAN TO BIM">SCAN TO BIM</button>
+            <button class="nav-btn" data-category="RENDERING">RENDERING</button>
+            <button class="nav-btn" data-category="REVIT FAMILIES">REVIT FAMILIES</button>
+            <button class="nav-btn" data-category="DRAFTING">DRAFTING</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="projects-grid" id="projectsGrid"></div>
+    </main>
+
+    <footer>
+        <p>© 2024 ZENITH VISIONS. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const projects = [
+            {id: 1, title: 'RESIDENTIAL COMMUNITY DEVELOPMENT', description: 'A PREMIUM RESIDENTIAL SOCIETY FEATURING 35 VILLAS. WE HANDLED COMPLETE REVIT MODELING OF ALL VILLAS, ROADS, AND PATHWAYS, ALONG WITH PHOTOREALISTIC RENDERINGS AND AN IMMERSIVE WALKTHROUGH PRESENTATION.', tags: ['ARCHITECTURE', 'STRUCTURE', 'MEP'], image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop'},
+            {id: 2, title: 'COMMERCIAL MALL FACADE DEVELOPMENT', description: 'A LARGE-SCALE COMMERCIAL MALL PROJECT FOCUSED ON DETAILED FACADE DESIGN AND VISUALIZATION. OUR TEAM EXECUTED THE FULL 3D MODELING, RENDERING, AND PRESENTATION TO ENHANCE THE ARCHITECTURAL IDENTITY.', tags: ['ARCHITECTURE'], image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop'},
+            {id: 3, title: 'CONTAINER-BASED RETAIL HUB', description: 'A MODULAR RETAIL AND CAFÉ HUB DESIGNED ENTIRELY WITH SHIPPING CONTAINERS — FEATURING OFFICE SPACES, RETAIL ZONES, AND A CAFÉ. WE DELIVERED THE FULL REVIT MODEL, RENDERINGS, AND CONSTRUCTION DRAWINGS.', tags: ['ARCHITECTURE'], image: 'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=800&h=600&fit=crop'},
+            {id: 4, title: 'CLASSICAL FARMHOUSE VILLA, INDORE', description: 'A LUXURY CLASSICAL-STYLE FARMHOUSE VILLA DESIGNED AND DOCUMENTED END-TO-END BY THE ZENITH VISIONS — INCLUDING COMPLETE REVIT MODELING, INTERIOR DESIGN, CONSTRUCTION DRAWINGS, 3D RENDERINGS, AND A FULL WALKTHROUGH PRESENTATION.', tags: ['ARCHITECTURE'], image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&h=600&fit=crop'},
+            {id: 5, title: 'RESIDENTIAL PERMIT SET', description: 'A RESIDENTIAL PROJECT IN CANADA WHERE WE DEVELOPED THE FULL PERMIT DOCUMENTATION AS PER LOCAL BUILDING CODES, ALONG WITH INTERIOR DESIGN, REVIT MODELING, PHOTOREALISTIC RENDERS, AND A VIRTUAL WALKTHROUGH.', tags: ['ARCHITECTURE'], image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop'},
+            {id: 6, title: 'RESIDENTIAL BUILDING DESIGN', description: 'A RESIDENTIAL PROJECT REFINED FROM INITIAL CONCEPT TO DETAILED EXECUTION DRAWINGS — INCLUDING DESIGN DEVELOPMENT, CONSTRUCTION DOCUMENTATION, 3D VISUALIZATION, AND WALKTHROUGHS DELIVERED WITH PRECISION AND CLARITY.', tags: ['ARCHITECTURE'], image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop'},
+            {id: 7, title: 'STRUCTURAL FARMHOUSE DESIGN, INDORE', description: 'WE EXECUTED THE COMPLETE STRUCTURAL DESIGN AND BIM MODELING FOR THIS FARMHOUSE IN INDORE, DEVELOPING HIGH-DETAIL REVIT SHEETS AND COORDINATED DOCUMENTATION WITH PRECISE STRUCTURAL DETAILING.', tags: ['STRUCTURE', 'DESIGN', 'CIVIL'], image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop'},
+            {id: 8, title: 'STRUCTURAL BIM DOCUMENTATION PROJECT', description: 'WE EXECUTED STRUCTURAL MODELING AND CREATED COMPLETE DRAWING SHEETS FOR ALL FLOORS, DELIVERING A COORDINATED AND DETAIL-RICH BIM DOCUMENTATION PACKAGE ALIGNED WITH CLIENT STANDARDS.', tags: ['STRUCTURE', 'DESIGN', 'CIVIL'], image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop'},
+            {id: 9, title: 'COMMUNITY CENTRE BIM MODEL & REBAR DETAILING', description: 'A FULLY MODELED COMMUNITY CENTRE PROJECT WHERE OUR TEAM DEVELOPED THE BIM STRUCTURE, REBAR DETAILING, AND SCHEDULING — ENSURING COMPLETE COORDINATION AND DOCUMENTATION ACCURACY FROM THE PROVIDED DESIGN.', tags: ['STRUCTURE', 'MODELING'], image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop'},
+            {id: 10, title: 'ARCHITECTURAL & STRUCTURAL CD SET', description: 'A U.S.-BASED PROJECT WHERE WE DELIVERED DETAILED REVIT MODELING AND A FULL CONSTRUCTION DRAWING SET FOR BOTH ARCHITECTURE AND STRUCTURE, WITH AN EMPHASIS ON PRECISE STRUCTURAL MODELING AND DOCUMENTATION.', tags: ['STRUCTURE'], image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop'},
+            {id: 11, title: 'BANGALOW WOODEN STRUCTURE BIM & CD SET', description: 'A WOODEN STRUCTURAL PROJECT WHERE THE DESIGN WAS PROVIDED, AND WE DEVELOPED A FULL REVIT MODEL ALONG WITH CONSTRUCTION DRAWING SETS SHOWCASING EVERY CONNECTION AND ASSEMBLY DETAIL.', tags: ['STRUCTURE', 'DRAFTING'], image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=600&fit=crop'},
+            {id: 12, title: 'WOODEN STRUCTURE WITH SITE & CONTOUR MODELING', description: 'A BIM PROJECT INVOLVING WOODEN ARCHITECTURE MODELING, SITE DEVELOPMENT, AND CONTOUR DETAILING — INCLUDING COMPREHENSIVE DRAWING SHEETS AND COORDINATED ARCHITECTURAL-STRUCTURAL DOCUMENTATION.', tags: ['STRUCTURE', 'DESIGN'], image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&h=600&fit=crop'},
+            {id: 13, title: 'COMPREHENSIVE MEP SYSTEMS MODELING', description: 'A HIGHLY INTRICATE PROJECT INVOLVING DETAILED BIM MODELING AND DOCUMENTATION OF PLUMBING, HVAC, DRAINAGE, GAS PIPELINES, AND ELECTRICAL SYSTEMS — EXECUTED WITH PRECISION AND COORDINATION ACROSS ALL MEP DISCIPLINES.', tags: ['MEP', 'PLUMBING'], image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&h=600&fit=crop'},
+            {id: 14, title: 'OIL REFINERY MEP AS-BUILT DOCUMENTATION', description: 'AN OIL REFINERY PROJECT WHERE WE DEVELOPED A PRECISE MEP MODEL OF EXISTING ON-SITE SYSTEMS. THE SCOPE INCLUDED COMPLETE BIM COORDINATION AND THE CREATION OF DETAILED CONSTRUCTION DOCUMENTATION SHEETS.', tags: ['MEP', 'HVAC'], image: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&h=600&fit=crop'},
+            {id: 15, title: 'INDUSTRIAL BUILDING MEP COORDINATION', description: 'AN INDUSTRIAL FACILITY FOCUSED ENTIRELY ON MEP MODELING — INCLUDING HVAC, PLUMBING, DRAINAGE, AND ELECTRICAL SYSTEMS — ENSURING ACCURACY, INTEGRATION, AND DOCUMENTATION FOR EXECUTION READINESS.', tags: ['MEP', 'BIM'], image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=600&fit=crop'},
+            {id: 16, title: 'INTERIOR 3D MODELING & VISUALIZATION', description: 'WE DEVELOPED A HIGHLY DETAILED AND PRECISE 3D INTERIOR MODEL BASED ON THE PROVIDED DESIGN — ENSURING EVERY MATERIAL, ELEMENT, AND PROPORTION ALIGNED SEAMLESSLY WITH EXECUTION-LEVEL ACCURACY.', tags: ['INTERIOR DOCUMENTATION', 'ELEVATIONS'], image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop'},
+            {id: 17, title: 'INTERIOR DOCUMENTATION PLANS & ELEVATIONS', description: 'COMPREHENSIVE INTERIOR DOCUMENTATION INCLUDING FURNITURE LAYOUTS, REFLECTED CEILING PLANS, GENERAL ARRANGEMENT (GA) PLANS, AND POWER LAYOUTS — ALL DRAFTED WITH PRECISION FOR ON-SITE IMPLEMENTATION.', tags: ['INTERIOR DOCUMENTATION', 'ASSEMBLIES'], image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&h=600&fit=crop'},
+            {id: 18, title: 'JOINERY MODELING & FAMILY CREATION', description: 'DEVELOPED PARAMETRIC JOINERY MODELS AND CUSTOM REVIT FAMILIES WITH ACCURATE MATERIALS AND TEXTURES PROVIDED BY THE CLIENT — ENSURING FABRICATION-READY PRECISION AND VISUAL CLARITY.', tags: ['INTERIOR DOCUMENTATION', 'SHOP DRAWING'], image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&h=600&fit=crop'},
+            {id: 19, title: 'CEILING & MILLWORK DETAIL SHEETS', description: 'DEVELOPED TYPICAL INTERIOR DETAIL SHEETS ILLUSTRATING CEILING LAYOUTS, MILLWORK JUNCTIONS, AND CONSTRUCTION JOINTS — ENSURING TECHNICAL ACCURACY AND DESIGN CONSISTENCY ACROSS ALL INTERIOR ELEMENTS.', tags: ['INTERIOR DOCUMENTATION', 'DETAILS'], image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'},
+            {id: 20, title: 'WALL FINISHES & MATERIAL DOCUMENTATION', description: 'CREATED DETAILED WALL FINISH DRAWINGS WITH ASSIGNED TEXTURES AND MATERIALS, FOLLOWED BY SECTIONAL DOCUMENTATION HIGHLIGHTING DIMENSIONS, LAYERS, AND FINISH SPECIFICATIONS.', tags: ['INTERIOR DOCUMENTATION', 'INTERIOR'], image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop'},
+            {id: 21, title: 'JOINERY & MILLWORK DETAILING', description: 'PRODUCED DETAILED JOINERY AND MILLWORK SHEETS SPECIFYING DIMENSIONS, MATERIALS, AND FIXING METHODS — ENABLING ACCURATE FABRICATION AND INSTALLATION DOCUMENTATION.', tags: ['INTERIOR DOCUMENTATION', 'JOINERY'], image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop'},
+            {id: 22, title: 'CLASSICAL HERITAGE BUILDING – SCAN TO BIM', description: 'A CLASSICAL-STYLE HERITAGE BUILDING MODELED ENTIRELY FROM LASER SCAN DATA. WE DEVELOPED THE COMPLETE REVIT MODEL, FLOOR PLANS, AREA DOCUMENTATION, AND DETAILED SHEETS WITH PRECISE DIMENSIONS AND SPATIAL COORDINATION.', tags: ['SCAN TO BIM', 'SCAN'], image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&h=600&fit=crop'},
+            {id: 23, title: 'LARGE-SCALE INSTITUTIONAL BUILDING – SCAN TO BIM', description: 'A LARGE-SCALE PROJECT WHERE WE MODELED THE COMPLETE ARCHITECTURE, STRUCTURE, AND ALL EQUIPMENT ELEMENTS FROM POINT CLOUD DATA — DELIVERING A COORDINATED BIM MODEL AND A FULL CONSTRUCTION DRAWING SET.', tags: ['SCAN TO BIM', 'BUILDING'], image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop'},
+            {id: 24, title: 'APARTMENT COMPLEX FACADE – SCAN TO BIM', description: 'A SCAN TO BIM PROJECT FOCUSING ON THE BUILDING FACADE, INCLUDING OPENINGS, TEMPORARY STRUCTURES, AND SLOPING ROOF ELEMENTS. THE MODEL CAPTURED EVERY ARCHITECTURAL FEATURE ACCURATELY.', tags: ['SCAN TO BIM', 'POINT CLOUD'], image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop'},
+            {id: 25, title: 'INTEGRATED MEP, ARCHITECTURAL & STRUCTURAL MODEL', description: 'A COMPREHENSIVE SCAN TO BIM PROJECT COVERING ARCHITECTURE, STRUCTURE, AND MEP SYSTEMS. THE SCOPE INCLUDED COORDINATED MODELING, DETAILED DOCUMENTATION SHEETS, AND VISUAL REFERENCES.', tags: ['SCAN TO BIM', 'MATTERPORT'], image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop'},
+            {id: 26, title: 'RESIDENTIAL BUNGALOW INTERIOR VISUALIZATION', description: 'A RESIDENTIAL BUNGALOW INTERIOR RENDERED IN LUMION WITH REALISTIC LIGHTING, MATERIALS, AND FINISHES. OUR TEAM HANDLED COMPLETE INTERIOR DESIGN, MODELING, AND RENDERING TO ACHIEVE A PHOTOREALISTIC PRESENTATION.', tags: ['RENDERING', 'INTERIOR'], image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&h=600&fit=crop'},
+            {id: 27, title: 'INTERIOR MODELING & RENDER PRESENTATION', description: 'A COMPLETE INTERIOR MODELING AND VISUALIZATION PROJECT — INCLUDING DETAILED REVIT MODELING, DRAWING SHEETS, AND FINAL LUMION RENDERINGS ENHANCED THROUGH POST-PRODUCTION FOR A POLISHED PRESENTATION.', tags: ['RENDERING', 'MODELING'], image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop'},
+            {id: 28, title: 'ARCHITECTURAL RENDERING WITH POST-PRODUCTION', description: 'RENDERINGS PRODUCED FROM A PROVIDED 3D MODEL, ENHANCED WITH DETAILED LIGHTING, TEXTURES, AND POST-PRODUCTION EFFECTS TO ACHIEVE HIGH-END VISUALIZATION QUALITY SUITABLE FOR PRESENTATION AND MARKETING.', tags: ['RENDERING', '3D MODELING'], image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&fit=crop'},
+            {id: 29, title: 'PERMIT SET VISUALIZATION PROJECT', description: 'A DUAL-SCOPE PROJECT INVOLVING MODELING, DRAFTING, AND PHOTOREALISTIC RENDERING — DEVELOPED TO SUPPORT THE PERMIT DOCUMENTATION PROCESS WITH DETAILED VISUAL PRESENTATIONS.', tags: ['RENDERING', 'EXTERIOR'], image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&h=600&fit=crop'},
+            {id: 30, title: 'ABSTRACT RESIDENTIAL BUILDING RENDERING', description: 'A UNIQUE, CONCEPT-DRIVEN RESIDENTIAL PROJECT WHERE WE DEVELOPED PHOTOREALISTIC RENDERINGS FROM THE PROVIDED DESIGN — HIGHLIGHTING ITS ABSTRACT GEOMETRY AND MODERN ARCHITECTURAL EXPRESSION.', tags: ['RENDERING', 'VISUALISATION'], image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&fit=crop'},
+            {id: 31, title: 'CONTAINER ARCHITECTURE VISUALIZATION', description: 'CONTAINER-BASED EXTERIOR AND INTERIOR RENDERINGS DEVELOPED IN THREE UNIQUE DESIGN OPTIONS. HIGHLY REALISTIC MATERIALS, LIGHTING, AND TEXTURES WERE USED TO CAPTURE A REFINED AND CONTEMPORARY AESTHETIC.', tags: ['RENDERING', 'CONTAINER'], image: 'https://images.unsplash.com/photo-1494145904049-0dca59b4bbad?w=800&h=600&fit=crop'},
+            {id: 32, title: 'UMBRELLA FAMILY ASSEMBLY PROJECT', description: 'WE DEVELOPED MULTIPLE REVIT FAMILIES FOR UMBRELLA COMPONENTS AND THEIR ASSEMBLIES — CREATING PRECISE, MODULAR, AND FULLY COORDINATED FAMILIES CONSOLIDATED INTO A SINGLE, OPTIMIZED BIM FILE.', tags: ['REVIT FAMILIES', 'MODELING'], image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop'},
+            {id: 33, title: 'MEP COMPONENT FAMILY DEVELOPMENT', description: 'A SERIES OF HIGH-PRECISION MEP FAMILIES FOCUSED ON ACCURATE GEOMETRY AND PARAMETRIC DETAILING. EACH ELEMENT WAS ASSIGNED MATERIALS AND RENDERED TO ACHIEVE BOTH TECHNICAL AND VISUAL CLARITY.', tags: ['REVIT FAMILIES', 'MODELING'], image: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&h=600&fit=crop'},
+            {id: 34, title: 'PARAMETRIC RESIDENTIAL FAMILY SET', description: 'A COLLECTION OF INTRICATE PARAMETRIC REVIT FAMILIES DESIGNED FOR RESIDENTIAL PROJECTS — ENABLING DESIGN FLEXIBILITY WITH MULTIPLE VARIANTS, DETAILED CONTROLS, AND OPTIMIZED BIM PERFORMANCE.', tags: ['REVIT FAMILIES', 'MODELING'], image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&h=600&fit=crop'},
+            {id: 35, title: 'COMPREHENSIVE ARCHITECTURAL DRAFTING SET', description: 'A COMPLETE ARCHITECTURAL DRAFTING PACKAGE INCLUDING PLANS, SECTIONS, AND CONSTRUCTION-READY DETAILS — DEVELOPED WITH PRECISION TO INCORPORATE EVERY ELEMENT REQUIRED FOR EXECUTION ON SITE.', tags: ['DRAFTING', 'MODELING'], image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop'},
+            {id: 36, title: 'STRUCTURAL DOCUMENTATION & DRAFTING', description: 'A DETAILED STRUCTURAL DRAFTING PROJECT WHERE WE PREPARED COORDINATED DRAWINGS, PLANS, AND SECTIONS — ENSURING ACCURATE REPRESENTATION OF ALL STRUCTURAL COMPONENTS FOR CONSTRUCTION AND COMPLIANCE.', tags: ['DRAFTING', 'MODELING'], image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop'},
+            {id: 37, title: 'TECHNICAL CONSTRUCTION DRAWING SET', description: 'A FULL SET OF TECHNICAL DRAFTING DOCUMENTS COVERING PLANS, ELEVATIONS, AND SECTIONAL DETAILS — METICULOUSLY CREATED TO SUPPORT CONSTRUCTION, COORDINATION, AND ON-SITE IMPLEMENTATION.', tags: ['DRAFTING', 'MODELING'], image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop'}
+        ];
+
+        let currentCategory = 'ALL PROJECTS';
+
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const filteredProjects = currentCategory === 'ALL PROJECTS' ? projects : projects.filter(p => p.tags.includes(currentCategory));
+            
+            grid.innerHTML = filteredProjects.map(project => '<div class="project-card"><div class="project-image-wrapper"><img src="' + project.image + '" alt="' + project.title + '" class="project-img"><div class="project-overlay"><p class="overlay-description">' + project.description + '</p><div class="overlay-arrow"><svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></div></div></div><div class="project-info"><div class="project-tags">' + project.tags.slice(0, 3).map(tag => '<span class="project-tag">' + tag + '</span>').join('') + '</div><h3 class="project-title">' + project.title + '</h3></div></div>').join('');
+        }
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                renderProjects();
+            });
+        });
+
+        renderProjects();
+    </script>
+</div>
+</section>

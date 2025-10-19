@@ -1,15 +1,6 @@
-/* ===========================================
-   ZENITH VISION - MAIN THEME STYLES
-   =========================================== */
-
-/* ===========================================
-   ELEMENTOR LAYOUT STYLES
-   =========================================== */
 .site-content .elementor-row {
 	flex-wrap: wrap;
 }
-
-/* Elementor Widget Container Layout */
 .elementor-widget-inner {
     margin-left: auto;
     margin-right: auto;
@@ -23,9 +14,6 @@
 	-ms-flex-line-pack: start;
 	align-content: flex-start;
 }
-/* ===========================================
-   ACCESSIBILITY - Reduced Motion Support
-   =========================================== */
 @media (prefers-reduced-motion: no-preference) {
     html.pxl-onepage-wrap {
         scroll-behavior: inherit;
