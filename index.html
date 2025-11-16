@@ -3452,7 +3452,7 @@ jQuery(document).ready(function($) {
                     title: 'INTERIOR DOCUMENTATION PLANS & ELEVATIONS',
                     tag: ' ASSEMBLIES , RENDER',
                     description: 'Comprehensive interior documentation including furniture layouts, reflected ceiling plans, general arrangement (GA) plans, and power layouts — all drafted with precision for on-site implementation.',
-                    image: 'images/OUR PROJECTS/5. INTERIOR DOCUMENTATION/Interior elevations.jpg'
+                    image: 'images/OUR PROJECTS/5. INTERIOR DOCUMENTATION/Interior elevations (1).jpg'
                 },
                 {
                     title: 'JOINERY MODELING & FAMILY CREATION',
@@ -3502,7 +3502,7 @@ jQuery(document).ready(function($) {
                     title: 'INTEGRATED MEP, ARCHITECTURAL & STRUCTURAL MODEL',
                     tag: ' MATTERPORT , SCAN',
                     description: 'A comprehensive scan to BIM project covering architecture, structure, and MEP systems. The scope included coordinated modeling, detailed documentation sheets, and visual references for accurate representation.',
-                    image: 'images/OUR PROJECTS/6. SCAN TO BIM/image.png'
+                    image: 'images/OUR PROJECTS/6. SCAN TO BIM/HVAC.png'
                 }
             ],
             'RENDERING': [
@@ -3522,7 +3522,7 @@ jQuery(document).ready(function($) {
                     title: 'ARCHITECTURAL RENDERING WITH POST-PRODUCTION',
                     tag: '3D MODELING , EXTERIOR',
                     description: 'Renderings produced from a provided 3D model, enhanced with detailed lighting, textures, and post-production effects to achieve high-end visualization quality suitable for presentation and marketing.',
-                    image: 'images/OUR PROJECTS/7. 3D VISUALIZATION/SCAN TO BIM.png'
+                    image: 'images/OUR PROJECTS/7. 3D VISUALIZATION/SCAN TO BIM (1).png'
                 },
                 {
                     title: 'PERMIT SET VISUALIZATION PROJECT',
@@ -3548,19 +3548,19 @@ jQuery(document).ready(function($) {
                     title: 'UMBRELLA FAMILY ASSEMBLY PROJECT',
                     tag: 'MODELING , LUMION',
                     description: 'We developed multiple Revit families for umbrella components and their assemblies — creating precise, modular, and fully coordinated families consolidated into a single, optimized BIM file.',
-                    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1200&h=800&fit=crop'
+                    image: 'images/OUR PROJECTS/8. REVIT FAMILIES/MEP COMPONENT.png'
                 },
                 {
                     title: 'MEP COMPONENT FAMILY DEVELOPMENT',
                     tag: 'MODELING , LUMION',
                     description: 'A series of high-precision MEP families focused on accurate geometry and parametric detailing. Each element was assigned materials and rendered to achieve both technical and visual clarity.',
-                    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=1200&h=800&fit=crop'
+                    image: 'images/OUR PROJECTS/8. REVIT FAMILIES/umbrella.png'
                 },
                 {
                     title: 'PARAMETRIC RESIDENTIAL FAMILY SET',
                     tag: 'MODELING , LUMION',
                     description: 'A collection of intricate parametric Revit families designed for residential projects — enabling design flexibility with multiple variants, detailed controls, and optimized BIM performance.',
-                    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop'
+                    image: 'images/OUR PROJECTS/8. REVIT FAMILIES/PARAMETRIC.png'
                 }
             ],
             'DRAFTING': [
@@ -3580,7 +3580,7 @@ jQuery(document).ready(function($) {
                     title: 'TECHNICAL CONSTRUCTION DRAWING SET',
                     tag: 'MODELING , LUMION',
                     description: 'A full set of technical drafting documents covering plans, elevations, and sectional details — meticulously created to support construction, coordination, and on-site implementation.',
-                    image: 'images/OUR PROJECTS/4. DRAFTING SERVICE/ID-DWG-11253_page-0001.jpg'
+                    image: 'images/OUR PROJECTS/4. DRAFTING SERVICE/ID-DWG-11253_page-0001 (1).JPG'
                 }
             ]
         };
@@ -4766,6 +4766,105 @@ jQuery(document).ready(function($) {
                 <a href="#">X.COM</a>
             </div> -->
         </div>
+        <!-- RESPONSIVE FOOTER -->
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <p id="copyright">
+        ©2025 ALL RIGHTS RESERVED, <span id="year"></span> Zenith Vision
+      </p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html" class="footer-link">Home</a>
+      <span class="sep" aria-hidden="true">|</span>
+      <a href="privacy policy/index.html" class="footer-link">Privacy Policy</a>
+      <span class="sep" aria-hidden="true">|</span>
+      <a href="terms condition/index.html" class="footer-link">Terms &amp; Conditions</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  /* Base footer styles */
+  .site-footer{
+  margin-top: 10px;
+    padding:18px 20px;
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    border-top: 1px solid #333 /* subtle top line (red) like screenshot */
+  }
+
+  .footer-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .footer-left p{
+   margin-left: -120px;
+    font-size:14px;
+    letter-spacing:0.2px;
+  }
+
+  .footer-nav{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:14px;
+  }
+
+  .footer-link{
+    text-decoration:none;          /* no underline */
+    color:inherit;
+    opacity:0.85;
+    transition:opacity .18s ease, transform .12s ease;
+    padding:4px 6px;
+    border-radius:4px;
+  }
+
+  .footer-link:hover,
+  .footer-link:focus{
+    opacity:1;
+    color: white;
+    transform:translateY(-2px);
+    outline:none;
+    text-decoration:none;
+  }
+
+  .sep{
+    color: rgba(255,255,255,0.12);
+    user-select:none;
+    margin:0 6px;
+    font-weight:400;
+  }
+
+  /* Responsive: stack on small screens */
+  @media (max-width:640px){
+    .footer-inner{
+      flex-direction:column;
+      gap:10px;
+      text-align:center;
+      padding:12px 16px;
+    }
+
+    .footer-nav{
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .sep{ display:none; } /* hide separators on mobile for cleaner look */
+  }
+</style>
+
+<script>
+  // auto year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
     </div>
 </footer>
 
