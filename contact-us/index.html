@@ -1369,7 +1369,15 @@ jQuery(document).ready(function($) {
     <!-- RIGHT FORM -->
     <div class="contact-right">
       <h2>Get In Touch</h2>
-      <form>
+      <form action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- REQUIRED HIDDEN FIELDS FOR WEB3FORMS -->
+        <input type="hidden" name="access_key" value="24a76d3c-4f1c-4f34-b64a-1bdf3edcb331">
+        <input type="hidden" name="subject" value="New Enquiry from Website ">
+        <input type="hidden" name="from_name" value="Website Contact Form">
+        <input type="hidden" name="redirect" value="https://thezenithvisions.com/contact-us/index.html">
+       
+
         <!-- Row 1 -->
         <div class="form-row">
           <div class="form-group">
@@ -1701,7 +1709,7 @@ document.addEventListener('click', (e) => {
 <div class="contact-section1">
     <!-- Logo -->
     <div class="footer-logo1">
-        <div class="logo-icon1"><img src="images/footerlogo.jpg" alt=""></div>
+        <div class="logo-icon1"><img src="../images/footerlogo.jpg" alt=""></div>
        
     </div>
 
